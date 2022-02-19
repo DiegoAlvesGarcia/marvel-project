@@ -1,1 +1,21 @@
-<p>heroes-list works!</p>
+<section class="container">
+    <div class="header">
+        <h1 class="title">
+            Marvel
+            <span>Heroes List</span>
+        </h1>
+        <p class="name">Diego</p>
+        <div class="input">
+            <input type="search" name="Heroes" id="heroes">
+            <label for="heroes">enter the hero's name</label>
+        </div>
+    </div>
+    <div class="main">
+        <div *ngFor="let character of characters" class="character">
+            <div class="card">
+                <img src="{{character.thumbnail.path}}.jpg" aria-hidden="true">
+                <p>{{character.name}}</p>
+            </div>
+        </div>
+    </div>
+</section>

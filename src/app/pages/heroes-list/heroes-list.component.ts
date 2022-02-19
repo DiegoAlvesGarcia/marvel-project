@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Result } from 'src/app/shared/interfaces/character.interface';
+import { CharacterService } from 'src/app/shared/services/character.service';
 
 @Component({
   selector: 'app-heroes-list',
@@ -7,9 +9,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeroesListComponent implements OnInit {
 
-  constructor() { }
+  characters: Result[] = [];
+  heroImage;
+
+  constructor(
+    private characterService: CharacterService
+  ) { }
 
   ngOnInit(): void {
+    this.getCharacters();
+  }
+
+  private getCharacters() {
+    this.characterService.getCharacters().subscribe({
+      next: (resp) => {
+        console.warn(resp);
+        console.warn(resp.results);
+        this.characters = resp.results;
+      },
+      error: () => {
+
+      },
+      complete: () => {
+
+      }
+    })
   }
 
 }

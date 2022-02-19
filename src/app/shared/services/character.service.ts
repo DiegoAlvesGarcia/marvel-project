@@ -18,8 +18,8 @@ export class CharacterService {
         private httpClient: HttpClient
     ) { }
 
-    getCharacters(): Observable<any> {
-        return this.httpClient.get<any>(
+    getCharacters(): Observable<Data> {
+        return this.httpClient.get<characterInterface>(
             this.urlBase + this.baseParams
         ).pipe(map((response) => response.data));
     }
