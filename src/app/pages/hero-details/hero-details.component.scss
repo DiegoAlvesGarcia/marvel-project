@@ -1,0 +1,106 @@
+.container {
+    min-height: 100%;
+    background: linear-gradient(90deg, rgba(31, 10, 10, 1) 0%, rgba(83, 0, 0, 1) 100%);
+    padding-bottom: 50px;
+
+    .header {
+        min-height: 410px;
+        height: 50vh;
+        min-height: 300px;
+
+        .background {
+            figure {
+                position: absolute;
+                order: inherit;
+                margin: 0;
+                width: 100%;
+                height: 50vh;
+                min-height: 300px;
+
+                .image {
+                    background-image: url(http://i.annihil.us/u/prod/marvel/i/mg/2/60/537bcaef0f6cf.jpg);
+                    background-position: center;
+                    height: 100%;
+                    background-size: cover;
+                    width: 100%;
+                }
+
+                .image:after {
+                    content: "";
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(90deg, rgba(0, 0, 0, 0.75) 0, transparent);
+                }
+            }
+        }
+
+        .hero-name {
+            height: 100%;
+            width: 100%;
+
+            .name {
+                height: 100%;
+                position: relative;
+                display: flex;
+
+                .text {
+                    padding: 0 10%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-end;
+                    color: #fff;
+
+                    h1 {
+                        border-bottom: 5px solid #530000;
+                        font-size: 3.5rem;
+                    }
+                }
+            }
+        }
+    }
+
+    .main {
+        padding: 0 10%;
+        color: #fff;
+
+        h2 {
+            font-size: 2.5rem;
+            border-left: 1px solid;
+            padding-left: 20px;
+        }
+
+        p {
+            letter-spacing: 1px;
+            line-height: 2;
+        }
+
+        .informations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            .list {
+                p {
+                    margin: 0 0px 20px 0;
+                    padding: 0 100px 0 0px;
+                    line-height: 1.5;
+                }
+
+                a {
+                    color: #fff;
+                    text-decoration: underline;
+                    cursor: pointer;
+                }
+
+                button {
+                    background: #070707;
+                    color: white;
+                    font-size: 1rem;
+                    padding: 10px 30px;
+                    margin-top: 30px;
+                    border: 1px solid white;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

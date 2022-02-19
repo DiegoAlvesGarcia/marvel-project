@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Result } from 'src/app/shared/interfaces/character.interface';
+import { CharacterService } from 'src/app/shared/services/character.service';
 
 @Component({
   selector: 'app-hero-details',
@@ -6,13 +9,37 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hero-details.component.scss']
 })
 export class HeroDetailsComponent implements OnInit {
-  caracterName: string;
-  description: string;
-  constructor() { }
+  caracterDetail: Result;
+  loader = true;
+  constructor(
+    private characterService: CharacterService,
+    private route: Router
+  ) { }
 
   ngOnInit(): void {
-    this.caracterName = 'Wolverine';
-    this.description = "Born with super-human senses and the power to heal from almost any wound, Wolverine was captured by a secret Canadian organization and given an unbreakable skeleton and claws. Treated like an animal, it took years for him to control himself. Now, he's a premiere member of both the X-Men and the Avengers."
+    this.geCharacterDetails();
   }
 
+  private geCharacterDetails() {
+    this.characterService.geCharacterDetails('wolverine').subscribe({
+      next: (resp) => {
+        console.warn(resp.results[0])
+        this.caracterDetail = resp.results[0];
+      },
+      error: () => {
+        this.route.navigateByUrl('/error');
+      },
+      complete: () => {
+        this.loader = false
+      }
+    })
+  }
+
+  detalsComics(detalsComics: string) {
+    console.warn('detalsComics', detalsComics);
+  }
+
+  detalsSeries(detalsComics: string) {
+    console.warn('detalsComics', detalsComics);
+  }
 }

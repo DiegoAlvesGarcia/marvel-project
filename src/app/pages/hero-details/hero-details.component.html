@@ -1,1 +1,41 @@
-<p>hero-details works!</p>
+<section class="container">
+    <app-loader *ngIf="loader"></app-loader>
+    <div class="content" *ngIf="!loader">
+        <div class="header">
+            <div class="background">
+                <figure>
+                    <div class="image"></div>
+                </figure>
+            </div>
+            <div class="hero-name">
+                <div class="name">
+                    <div class="text">
+                        <h1>{{ caracterDetail.name | uppercase }}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="description">
+                <h2>Description</h2>
+                <p>{{ caracterDetail.description }}</p>
+            </div>
+            <div class="informations">
+                <div class="list">
+                    <h2>Some Comics</h2>
+                    <p *ngFor="let comic of caracterDetail.comics.items">
+                        <a role="link" (click)="detalsComics(comic.resourceURI)">{{ comic.name | lowercase }}</a>
+                    </p>
+                    <button>More Comics</button>
+                </div>
+                <div class="list">
+                    <h2>Some Series</h2>
+                    <p *ngFor="let series of caracterDetail.series.items">
+                        <a role="link" (click)="detalsSeries(series.resourceURI)">{{ series.name | lowercase }}</a>
+                    </p>
+                    <button>More Series</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

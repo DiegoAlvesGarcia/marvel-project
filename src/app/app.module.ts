@@ -6,17 +6,21 @@ import { AppComponent } from './app.component';
 import { HeroesListComponent } from './pages/heroes-list/heroes-list.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { HeroDetailsComponent } from './pages/hero-details/hero-details.component';
+import { HttpClientModule } from '@angular/common/http';
+import { LoaderComponent } from './shared/components/loader/loader.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeroesListComponent,
     ErrorComponent,
-    HeroDetailsComponent
+    HeroDetailsComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
