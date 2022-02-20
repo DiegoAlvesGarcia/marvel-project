@@ -3,18 +3,18 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeroesListComponent } from './pages/heroes-list/heroes-list.component';
+import { CharacterListComponent } from './pages/character-list/character-list.component';
 import { ErrorComponent } from './pages/error/error.component';
-import { HeroDetailsComponent } from './pages/hero-details/hero-details.component';
+import { CharacterDetailsComponent } from './pages/character-details/character-details.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoaderComponent } from './shared/components/loader/loader.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeroesListComponent,
+    CharacterListComponent,
     ErrorComponent,
-    HeroDetailsComponent,
+    CharacterDetailsComponent,
     LoaderComponent
   ],
   imports: [

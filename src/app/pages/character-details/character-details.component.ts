@@ -4,11 +4,11 @@ import { Result } from 'src/app/shared/interfaces/character.interface';
 import { CharacterService } from 'src/app/shared/services/character.service';
 
 @Component({
-  selector: 'app-hero-details',
-  templateUrl: './hero-details.component.html',
-  styleUrls: ['./hero-details.component.scss']
+  selector: 'app-character-details',
+  templateUrl: './character-details.component.html',
+  styleUrls: ['./character-details.component.scss']
 })
-export class HeroDetailsComponent implements OnInit {
+export class CharacterDetailsComponent implements OnInit {
   characterDetail: Result;
   loader = true;
   constructor(

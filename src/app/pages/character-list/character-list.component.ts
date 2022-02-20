@@ -3,11 +3,11 @@ import { Result } from 'src/app/shared/interfaces/character.interface';
 import { CharacterService } from 'src/app/shared/services/character.service';
 
 @Component({
-  selector: 'app-heroes-list',
-  templateUrl: './heroes-list.component.html',
-  styleUrls: ['./heroes-list.component.scss']
+  selector: 'app-character-list',
+  templateUrl: './character-list.component.html',
+  styleUrls: ['./character-list.component.scss']
 })
-export class HeroesListComponent implements OnInit {
+export class CharacterListComponent implements OnInit {
 
   characters: Result[] = [];
   loader = true;

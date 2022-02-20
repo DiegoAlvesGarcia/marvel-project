@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HeroesListComponent } from './pages/heroes-list/heroes-list.component';
-import { HeroDetailsComponent } from './pages/hero-details/hero-details.component';
+import { CharacterListComponent } from './pages/character-list/character-list.component';
+import { CharacterDetailsComponent } from './pages/character-details/character-details.component';
 import { ErrorComponent } from './pages/error/error.component';
 
 
@@ -13,11 +13,11 @@ const routes: Routes = [
   },
   {
     path: 'heroes-list',
-    component: HeroesListComponent
+    component: CharacterListComponent
   },
   {
     path: 'hero-details',
-    component: HeroDetailsComponent
+    component: CharacterDetailsComponent
   },
   {
     path: 'error',
