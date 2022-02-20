@@ -4,7 +4,6 @@
     padding-bottom: 50px;
 
     .header {
-        min-height: 410px;
         height: 50vh;
         min-height: 300px;
 
@@ -53,7 +52,7 @@
 
                     h1 {
                         border-bottom: 5px solid #530000;
-                        font-size: 3.5rem;
+                        margin: 40px 0;
                     }
                 }
             }
@@ -65,14 +64,18 @@
         color: #fff;
 
         h2 {
-            font-size: 2.5rem;
             border-left: 1px solid;
             padding-left: 20px;
+            margin: 40px 0;
         }
 
         p {
             letter-spacing: 1px;
             line-height: 2;
+        }
+
+        .description {
+            margin-bottom: 30px;
         }
 
         .informations {
@@ -92,13 +95,19 @@
                 }
 
                 button {
-                    background: #070707;
+                    background: #151515;
                     color: white;
                     font-size: 1rem;
                     padding: 10px 30px;
                     margin-top: 30px;
-                    border: 1px solid white;
+                    border: 0;
                     cursor: pointer;
+                    font-family: "Marvel", sans-serif;
+                    font-size: 1rem;
+                }
+
+                button:hover {
+                    background: #931919;
                 }
             }
         }

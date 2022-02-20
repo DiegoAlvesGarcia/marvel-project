@@ -9,7 +9,7 @@ import { CharacterService } from 'src/app/shared/services/character.service';
   styleUrls: ['./hero-details.component.scss']
 })
 export class HeroDetailsComponent implements OnInit {
-  caracterDetail: Result;
+  characterDetail: Result;
   loader = true;
   constructor(
     private characterService: CharacterService,
@@ -24,7 +24,7 @@ export class HeroDetailsComponent implements OnInit {
     this.characterService.geCharacterDetails('wolverine').subscribe({
       next: (resp) => {
         console.warn(resp.results[0])
-        this.caracterDetail = resp.results[0];
+        this.characterDetail = resp.results[0];
       },
       error: () => {
         this.route.navigateByUrl('/error');
