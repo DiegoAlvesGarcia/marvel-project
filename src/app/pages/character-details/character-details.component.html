@@ -15,19 +15,19 @@
         </div>
     </div>
     <div class="main">
-        <div class="description">
+        <div class="description" *ngIf="characterDetail.description">
             <h2>Description</h2>
             <p>{{ characterDetail.description }}</p>
         </div>
         <div class="informations">
-            <div class="list">
+            <div class="list" *ngIf="characterDetail.comics.items[0]">
                 <h2>Some Comics</h2>
                 <p *ngFor="let comic of characterDetail.comics.items">
                     <a role="link" (click)="detalsComics(comic.resourceURI)">{{ comic.name | lowercase }}</a>
                 </p>
                 <button>more comics</button>
             </div>
-            <div class="list">
+            <div class="list" *ngIf="characterDetail.series.items[0]">
                 <h2>Some Series</h2>
                 <p *ngFor="let series of characterDetail.series.items">
                     <a role="link" (click)="detalsSeries(series.resourceURI)">{{ series.name | lowercase }}</a>

@@ -11,6 +11,7 @@ import { CharacterService } from 'src/app/shared/services/character.service';
 export class CharacterDetailsComponent implements OnInit {
   characterDetail: Result;
   loader = true;
+
   constructor(
     private characterService: CharacterService,
     private route: Router
@@ -21,18 +22,13 @@ export class CharacterDetailsComponent implements OnInit {
   }
 
   private geCharacterDetails() {
-    this.characterService.geCharacterDetails('wolverine').subscribe({
-      next: (resp) => {
-        console.warn(resp.results[0])
-        this.characterDetail = resp.results[0];
-      },
-      error: () => {
-        this.route.navigateByUrl('/error');
-      },
-      complete: () => {
-        this.loader = false
-      }
-    })
+    if (!this.characterService.character) {
+      this.route.navigateByUrl('/error');
+      return;
+    }
+
+    this.characterDetail = this.characterService.character;
+    this.loader = false;
   }
 
   detalsComics(detalsComics: string) {
