@@ -10,15 +10,20 @@ import { CharacterService } from 'src/app/shared/services/character.service';
 export class HeroesListComponent implements OnInit {
 
   characters: Result[] = [];
-  heroImage;
   loader = true;
+  name: string;
 
   constructor(
     private characterService: CharacterService
   ) { }
 
   ngOnInit(): void {
+    this.getUserName();
     this.getCharacters();
+  }
+
+  private getUserName() {
+    this.name = 'Diego'
   }
 
   private getCharacters() {
