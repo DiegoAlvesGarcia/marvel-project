@@ -5,7 +5,7 @@
             <span class="principal">Marvel's</span>
             <span class="secundary">Characters</span>
         </h1>
-        <p class="name">{{ name }}</p>
+        <p class="name">Welcome, {{ name }}</p>
         <div class="input">
             <input type="search" name="Heroes" id="heroes">
             <label for="heroes">enter the hero's name</label>
@@ -13,11 +13,12 @@
     </div>
     <div class="main">
         <div *ngFor="let character of characters" class="character">
-            <div class="card">
+            <div class="card" (click)="setCharacter(character)">
                 <img src="{{character.thumbnail.path}}.jpg" aria-hidden="true">
                 <p>{{character.name}}</p>
             </div>
         </div>
-        <button class="button-more-heroes">load more heroes</button>
+        <button *ngIf="!localLoader" (click)="getCharacters()" class="button-area">load more heroes</button>
+        <app-local-loader class="button-area" *ngIf="localLoader"></app-local-loader>
     </div>
 </section>

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { Md5 } from 'ts-md5/dist/md5';
-import { characterInterface, Data } from '../interfaces/character.interface';
+import { characterInterface, Data, Result } from '../interfaces/character.interface';
 
 @Injectable({ providedIn: 'root' })
 export class CharacterService {
@@ -18,22 +18,20 @@ export class CharacterService {
         private httpClient: HttpClient
     ) { }
 
-    getCharacters(): Observable<Data> {
-        return this.httpClient.get<characterInterface>(
-            this.urlBase + this.baseParams
-        ).pipe(map((response) => response.data));
+    private characterValue: Result;
+    
+    get character() : Result {
+        return this.characterValue;
     }
 
-    geCharacterDetails(name: string): Observable<Data> {
+    set character(value : Result) {
+        console.warn(value);
+        this.characterValue = value;
+    }
+
+    getCharacters(counter: number): Observable<Data> {
         return this.httpClient.get<characterInterface>(
-            this.urlBase + `name=${name}&` + this.baseParams
-        ).pipe(
-            map((response) => {
-                if (response?.data?.results?.length < 1) {
-                    throw new Error('character not found');
-                }
-                return response.data
-            }),
-        );
+            this.urlBase + `offset=${counter}&` + this.baseParams
+        ).pipe(map((response) => response.data));
     }
 }

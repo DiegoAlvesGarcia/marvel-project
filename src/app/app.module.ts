@@ -8,6 +8,7 @@ import { ErrorComponent } from './pages/error/error.component';
 import { CharacterDetailsComponent } from './pages/character-details/character-details.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoaderComponent } from './shared/components/loader/loader.component';
+import { LocalLoaderComponent } from './shared/components/local-loader/local-loader.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { LoaderComponent } from './shared/components/loader/loader.component';
     CharacterListComponent,
     ErrorComponent,
     CharacterDetailsComponent,
-    LoaderComponent
+    LoaderComponent,
+    LocalLoaderComponent
   ],
   imports: [
     BrowserModule,
