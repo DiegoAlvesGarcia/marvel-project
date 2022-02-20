@@ -11,6 +11,7 @@ export class HeroesListComponent implements OnInit {
 
   characters: Result[] = [];
   heroImage;
+  loader = true;
 
   constructor(
     private characterService: CharacterService
@@ -31,7 +32,7 @@ export class HeroesListComponent implements OnInit {
 
       },
       complete: () => {
-
+        this.loader = false;
       }
     })
   }

@@ -1,4 +1,5 @@
-<section class="container">
+<app-loader *ngIf="loader"></app-loader>
+<section class="container" *ngIf="!loader">
     <div class="header">
         <h1 class="title">
             Marvel
@@ -17,5 +18,6 @@
                 <p>{{character.name}}</p>
             </div>
         </div>
+        <button class="button-more-heroes">load more heroes</button>
     </div>
 </section>

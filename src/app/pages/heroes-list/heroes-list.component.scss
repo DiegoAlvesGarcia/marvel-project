@@ -55,6 +55,8 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         background: linear-gradient(90deg, rgba(31, 10, 10, 1) 0%, rgba(83, 0, 0, 1) 100%);
+        align-items: center;
+        justify-items: center;
 
         .character {
             height: 100%;
@@ -69,6 +71,7 @@
                 color: white;
                 min-height: 300px;
                 border-radius: 0 0 30px 0;
+                cursor: pointer;
 
                 img {
                     border-bottom: 5px solid #931919;
@@ -91,6 +94,23 @@
                     border-bottom: 5px solid #151515;
                 }
             }
+        }
+
+        .button-more-heroes {
+            margin: 30px 30px;
+            height: 50%;
+            width: 50%;
+            background: #151515;
+            color: white;
+            border-radius: 50%;
+            border: 0;
+            font-size: 1.5rem;
+            font-family: 'Marvel', sans-serif;
+            cursor: pointer;
+        }
+
+        .button-more-heroes:hover {
+            background: #931919;
         }
     }
 }
