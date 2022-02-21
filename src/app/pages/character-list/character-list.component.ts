@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { take } from 'rxjs';
-import { Result } from 'src/app/shared/interfaces/character.interface';
+import { Data, Result } from 'src/app/shared/interfaces/character.interface';
 import { CharacterService } from 'src/app/shared/services/character.service';
 
 @Component({
@@ -28,12 +28,12 @@ export class CharacterListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getUserName();
-    this.getCharacters();
     this.setForm();
+    this.getUserName();
+    this.getCharactersBehavior();
   }
 
-  setForm() {
+  private setForm() {
     this.form = new FormGroup({
       search: new FormControl()
     });
@@ -43,23 +43,43 @@ export class CharacterListComponent implements OnInit {
     this.name = 'Diego'
   }
 
-  getCharacters(name?: string) {
+  private getCharactersService(name?: string) {
     this.characterService.getCharacters(this.counter, name)
-    .pipe(take(1))
-    .subscribe({
-      next: (resp) => {
-        this.charactersResponseComplete = resp;
-        this.counter = this.counter + 20;
-        this.characters = this.characters.concat(resp.results);
-      },
-      error: () => {
-        this.router.navigateByUrl('/error')
-      },
-      complete: () => {
-        this.loader = false;
-        this.localLoader = false;
-      }
-    })
+      .pipe(take(1))
+      .subscribe({
+        next: (resp) => {
+          this.setValuesCharacters(resp);
+        },
+        error: () => {
+          this.router.navigateByUrl('/error')
+        },
+        complete: () => {
+          this.finalizeLoader();
+          this.localLoader = false;
+        }
+      })
+  }
+
+  private getCharactersBehavior() {
+    this.characterService.characters$
+      .pipe(take(1))
+      .subscribe({
+        next: (resp) => {
+          if (!resp) {
+            this.getCharactersService()
+            return
+          }
+
+          this.setValuesCharacters(resp);
+          this.finalizeLoader();
+        },
+      })
+  }
+
+  private setValuesCharacters(value: Data) {
+    this.charactersResponseComplete = value;
+    this.counter = value.count + value.offset;
+    this.characters = value.results;
   }
 
   setCharacter(character: Result) {
@@ -69,14 +89,23 @@ export class CharacterListComponent implements OnInit {
 
   moreCharacters() {
     this.localLoader = true;
-    this.getCharacters(this.valueFormSearch);
+    this.getCharactersService(this.valueFormSearch);
   }
 
   searchCharacter() {
-    this.loader = true;
+    this.startLoarder()
     this.counter = 0;
     this.characters = [];
     this.valueFormSearch = this.form.value.search
-    this.getCharacters(this.valueFormSearch);
+    this.characterService.clearCharactersSubject();
+    this.getCharactersService(this.valueFormSearch);
+  }
+  
+  private startLoarder() {
+    this.loader = true;
+  }
+
+  private finalizeLoader() {
+      this.loader = false
   }
 }
