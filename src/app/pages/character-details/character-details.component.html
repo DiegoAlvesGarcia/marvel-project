@@ -24,7 +24,7 @@
                 <h2>Some Comics</h2>
                 <ng-container *ngIf="characterDetail.comics.items[0];else no_comics">
                     <p *ngFor="let comic of characterDetail.comics.items">
-                        <a role="link" (click)="detalsComics(comic.resourceURI)">{{ comic.name }}</a>
+                        {{ comic.name }}
                     </p>
                 </ng-container>
                 <ng-template #no_comics>
@@ -32,13 +32,12 @@
                         There aren't series
                     </p>
                 </ng-template>
-                <button>more comics</button>
             </div>
             <div class="list">
                 <h2>Some Series</h2>
                 <ng-container *ngIf="characterDetail.series.items[0];else no_series">
                     <p *ngFor="let series of characterDetail.series.items">
-                        <a role="link" (click)="detalsSeries(series.resourceURI)">{{ series.name }}</a>
+                        {{ series.name }}
                     </p>
                 </ng-container>
                 <ng-template #no_series>
@@ -46,7 +45,6 @@
                         There aren't series
                     </p>
                 </ng-template>
-                <button>more series</button>
             </div>
         </div>
     </div>

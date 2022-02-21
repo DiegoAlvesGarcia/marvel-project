@@ -41,12 +41,4 @@ export class CharacterDetailsComponent implements OnInit, AfterViewInit {
         `url(${this.characterDetail.thumbnail.path + '.' + this.characterDetail.thumbnail.extension})`;
     }
   }
-
-  detalsComics(detalsComics: string) {
-    console.warn('detalsComics', detalsComics);
-  }
-
-  detalsSeries(detalsComics: string) {
-    console.warn('detalsComics', detalsComics);
-  }
 }
