@@ -8,15 +8,15 @@ import { ErrorComponent } from './pages/error/error.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/heroes-list',
+    redirectTo: '/character-list',
     pathMatch: 'full'
   },
   {
-    path: 'heroes-list',
+    path: 'character-list',
     component: CharacterListComponent
   },
   {
-    path: 'hero-details',
+    path: 'character-details',
     component: CharacterDetailsComponent
   },
   {

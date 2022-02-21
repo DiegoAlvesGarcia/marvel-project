@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { take } from 'rxjs';
 import { Result } from 'src/app/shared/interfaces/character.interface';
 import { CharacterService } from 'src/app/shared/services/character.service';
 
@@ -43,14 +44,16 @@ export class CharacterListComponent implements OnInit {
   }
 
   getCharacters(name?: string) {
-    this.characterService.getCharacters(this.counter, name).subscribe({
+    this.characterService.getCharacters(this.counter, name)
+    .pipe(take(1))
+    .subscribe({
       next: (resp) => {
         this.charactersResponseComplete = resp;
         this.counter = this.counter + 20;
         this.characters = this.characters.concat(resp.results);
       },
       error: () => {
-
+        this.router.navigateByUrl('/error')
       },
       complete: () => {
         this.loader = false;
@@ -61,7 +64,7 @@ export class CharacterListComponent implements OnInit {
 
   setCharacter(character: Result) {
     this.characterService.character = character;
-    this.router.navigateByUrl('/hero-details');
+    this.router.navigateByUrl('/character-details');
   }
 
   moreCharacters() {
