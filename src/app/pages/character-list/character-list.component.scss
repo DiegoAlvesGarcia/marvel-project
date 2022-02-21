@@ -95,6 +95,7 @@
         background: linear-gradient(90deg, rgba(31, 10, 10, 1) 0%, rgba(83, 0, 0, 1) 100%);
         align-items: center;
         justify-items: center;
+        padding-right: 10%;
 
         .character {
             height: 100%;
@@ -164,5 +165,23 @@
         button:hover {
             background: #931919;
         }
+    }
+
+    .go-up {
+        position: fixed;
+        bottom: 5%;
+        right: 5%;
+        background: #151515;
+        border: 1px solid #464040;
+        border-radius: 100%;
+        color: white;
+        font-size: 25px;
+        width: 50px;
+        height: 50px;
+        font-family: 'marvel';
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 }

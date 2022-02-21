@@ -20,7 +20,7 @@
     </div>
     <div class="main">
         <div *ngFor="let character of characters" class="character">
-            <div class="card" (click)="setCharacter(character)">
+            <div class="card" (click)="goToCharacterDetails(character)">
                 <img src="{{character.thumbnail.path}}.jpg" aria-hidden="true">
                 <p>{{character.name}}</p>
             </div>
@@ -29,4 +29,5 @@
             (click)="moreCharacters()" class="button-area">load more heroes</button>
         <app-local-loader class="button-area" *ngIf="localLoader"></app-local-loader>
     </div>
+    <button aria-hidden="true" (click)="scrollTop()" class="go-up">&#9650;</button>
 </section>

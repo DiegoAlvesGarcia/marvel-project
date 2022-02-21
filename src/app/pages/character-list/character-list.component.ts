@@ -82,7 +82,15 @@ export class CharacterListComponent implements OnInit {
     this.characters = value.results;
   }
 
-  setCharacter(character: Result) {
+  private startLoarder() {
+    this.loader = true;
+  }
+
+  private finalizeLoader() {
+      this.loader = false
+  }
+
+  goToCharacterDetails(character: Result) {
     this.characterService.character = character;
     this.router.navigateByUrl('/character-details');
   }
@@ -100,12 +108,8 @@ export class CharacterListComponent implements OnInit {
     this.characterService.clearCharactersSubject();
     this.getCharactersService(this.valueFormSearch);
   }
-  
-  private startLoarder() {
-    this.loader = true;
-  }
 
-  private finalizeLoader() {
-      this.loader = false
+  scrollTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
