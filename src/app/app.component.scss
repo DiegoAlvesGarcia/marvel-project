@@ -1,0 +1,15 @@
+.goBack {
+    background: #151515;
+    z-index: 1;
+    width: 100%;
+    border-bottom: 1px solid #3e3e3e;
+
+    button {
+        background: transparent;
+        border: 0;
+        color: white;
+        font-size: 2rem;
+        font-family: monospace;
+        margin: 3px 15px;
+    }
+}
