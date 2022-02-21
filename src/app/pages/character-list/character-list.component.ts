@@ -13,13 +13,12 @@ import { CharacterService } from 'src/app/shared/services/character.service';
 export class CharacterListComponent implements OnInit {
 
   private counter: number = 0;
-
+  private valueFormSearch: string;
+  
   characters: Result[] = [];
   loader: boolean = true;
   localLoader: boolean = false;
-  name: string;
   form: FormGroup;
-  valueFormSearch: string;
   charactersResponseComplete: any;
 
   constructor(
@@ -29,7 +28,6 @@ export class CharacterListComponent implements OnInit {
 
   ngOnInit(): void {
     this.setForm();
-    this.getUserName();
     this.getCharactersBehavior();
   }
 
@@ -37,10 +35,6 @@ export class CharacterListComponent implements OnInit {
     this.form = new FormGroup({
       search: new FormControl()
     });
-  }
-
-  private getUserName() {
-    this.name = 'Diego'
   }
 
   private getCharactersService(name?: string) {
