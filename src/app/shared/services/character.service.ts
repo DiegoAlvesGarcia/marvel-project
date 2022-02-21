@@ -29,9 +29,9 @@ export class CharacterService {
         this.characterValue = value;
     }
 
-    getCharacters(counter: number): Observable<Data> {
+    getCharacters(counter: number, name?: string): Observable<Data> {
         return this.httpClient.get<characterInterface>(
-            this.urlBase + `offset=${counter}&` + this.baseParams
+            this.urlBase + (name ? `nameStartsWith=${name}&` : '') + `offset=${counter}&` + this.baseParams
         ).pipe(map((response) => response.data));
     }
 }

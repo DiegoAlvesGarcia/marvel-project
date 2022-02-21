@@ -6,8 +6,15 @@
             <span class="secundary">Characters</span>
         </h1>
         <p class="name">Welcome, {{ name }}</p>
-        <div class="input">
-            <input type="search" name="Heroes" id="heroes">
+        <div class="search">
+            <div class="input-area">
+                <form [formGroup]="form">
+                    <input name="Heroes" id="heroes" formControlName="search">
+                    <button class="button-search" (click)="searchCharacter()">
+                        <i class="gg-search"></i>
+                    </button>
+                </form>
+            </div>
             <label for="heroes">enter the hero's name</label>
         </div>
     </div>
@@ -18,7 +25,8 @@
                 <p>{{character.name}}</p>
             </div>
         </div>
-        <button *ngIf="!localLoader" (click)="getCharacters()" class="button-area">load more heroes</button>
+        <button [disabled]="charactersResponseComplete.count < charactersResponseComplete.limit" *ngIf="!localLoader"
+            (click)="moreCharacters()" class="button-area">load more heroes</button>
         <app-local-loader class="button-area" *ngIf="localLoader"></app-local-loader>
     </div>
 </section>
