@@ -13,15 +13,24 @@ const routes: Routes = [
   },
   {
     path: 'character-list',
-    component: CharacterListComponent
+    component: CharacterListComponent,
+    data: {
+      showHeader: true,
+    }
   },
   {
     path: 'character-details',
-    component: CharacterDetailsComponent
+    component: CharacterDetailsComponent,
+    data: {
+      showHeader: true,
+    }
   },
   {
     path: 'error',
-    component: ErrorComponent
+    component: ErrorComponent,
+    data: {
+      showHeader: false,
+    }
   }
 ];
 

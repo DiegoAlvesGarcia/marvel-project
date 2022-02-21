@@ -1,4 +1,5 @@
-<div class="goBack">
+<div class="goBack" *ngIf="showHeader">
     <button (click)="previousRoute()"><</button>
+    <button (click)="nextRoute()">></button>
 </div>
 <router-outlet></router-outlet>
