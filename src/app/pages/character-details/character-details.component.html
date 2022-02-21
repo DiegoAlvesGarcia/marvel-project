@@ -15,23 +15,37 @@
         </div>
     </div>
     <div class="main">
-        <div class="description" *ngIf="characterDetail.description">
+        <div class="description">
             <h2>Description</h2>
-            <p>{{ characterDetail.description }}</p>
+            <p>{{ characterDetail.description ? characterDetail.description : "There isn't description"}}</p>
         </div>
         <div class="informations">
-            <div class="list" *ngIf="characterDetail.comics.items[0]">
+            <div class="list">
                 <h2>Some Comics</h2>
-                <p *ngFor="let comic of characterDetail.comics.items">
-                    <a role="link" (click)="detalsComics(comic.resourceURI)">{{ comic.name | lowercase }}</a>
-                </p>
+                <ng-container *ngIf="characterDetail.comics.items[0];else no_comics">
+                    <p *ngFor="let comic of characterDetail.comics.items">
+                        <a role="link" (click)="detalsComics(comic.resourceURI)">{{ comic.name }}</a>
+                    </p>
+                </ng-container>
+                <ng-template #no_comics>
+                    <p>
+                        There aren't series
+                    </p>
+                </ng-template>
                 <button>more comics</button>
             </div>
-            <div class="list" *ngIf="characterDetail.series.items[0]">
+            <div class="list">
                 <h2>Some Series</h2>
-                <p *ngFor="let series of characterDetail.series.items">
-                    <a role="link" (click)="detalsSeries(series.resourceURI)">{{ series.name | lowercase }}</a>
-                </p>
+                <ng-container *ngIf="characterDetail.series.items[0];else no_series">
+                    <p *ngFor="let series of characterDetail.series.items">
+                        <a role="link" (click)="detalsSeries(series.resourceURI)">{{ series.name }}</a>
+                    </p>
+                </ng-container>
+                <ng-template #no_series>
+                    <p>
+                        There aren't series
+                    </p>
+                </ng-template>
                 <button>more series</button>
             </div>
         </div>
