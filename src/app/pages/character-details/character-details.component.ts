@@ -23,6 +23,7 @@ export class CharacterDetailsComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.setBackgroundImage();
+    this.scrollToTop()
   }
 
   private geCharacterDetails() {
@@ -33,6 +34,10 @@ export class CharacterDetailsComponent implements OnInit, AfterViewInit {
 
     this.characterDetail = this.characterService.character;
     this.loader = false;
+  }
+
+  private scrollToTop() {
+    window.scrollTo(0, 0);
   }
 
   private setBackgroundImage() {
