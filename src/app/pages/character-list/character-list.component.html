@@ -28,7 +28,7 @@
         <p *ngIf="!characters[0]" class="character-not-found">
             Sorry, character not found!
         </p>
-        <button [disabled]="charactersResponseComplete.count < charactersResponseComplete.limit" *ngIf="!localLoader"
+        <button [disabled]="charactersResponseComplete.count < charactersResponseComplete.limit" *ngIf="!localLoader && characters[0]"
             (click)="moreCharacters()" class="button-more-characters">load more heroes</button>
         <app-local-loader class="local-loader" *ngIf="localLoader"></app-local-loader>
     </div>
