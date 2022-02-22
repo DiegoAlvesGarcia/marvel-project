@@ -17,6 +17,7 @@ export class CharacterService {
     private charactersSubject = new BehaviorSubject<Data>(null);
     
     private characterValue: Result;
+    private valueFormSearchListCharacter: string;
     private characterData: Data;
     private characterResultList: Result[] = [];
 
@@ -34,6 +35,14 @@ export class CharacterService {
 
     set character(value: Result) {
         this.characterValue = value;
+    }
+
+    get valueFormSearch(): string {
+        return this.valueFormSearchListCharacter;
+    }
+
+    set valueFormSearch(value: string) {
+        this.valueFormSearchListCharacter = value;
     }
 
     getCharacters(counter: number, name?: string): Observable<Data> {

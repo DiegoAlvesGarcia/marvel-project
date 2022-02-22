@@ -23,6 +23,7 @@
             justify-content: center;
             flex-direction: column;
             margin: 15px 0;
+            cursor: pointer;
 
             .principal {
                 text-transform: uppercase;
@@ -86,6 +87,15 @@
             label {
                 font-size: 1rem;
             }
+
+            .clear-search {
+                margin-top: 10px;
+                background: transparent;
+                border: 1px solid white;
+                padding: 8px 16px;
+                color: white;
+                font-size: 16px;
+            }
         }
     }
 
@@ -96,7 +106,7 @@
         align-items: center;
         justify-items: center;
 
-        .character {
+        .character-list {
             height: 100%;
             display: flex;
             flex-direction: column;
@@ -138,8 +148,13 @@
             }
         }
 
-        .button-area {
-            margin: 30px 30px;
+        .character-not-found {
+            color: white;
+            font-size: 24px;
+        }
+
+        .button-more-characters {
+            margin: 30px;
             height: 150px;
             width: 150px;
             background: #151515;
@@ -152,17 +167,21 @@
             align-items: center;
         }
 
-        button:disabled {
+        .button-more-characters:disabled {
             background: #959595;
             cursor: no-drop;
         }
 
-        button:hover:disabled {
+        .button-more-characters:hover:disabled {
             background: #959595;
         }
 
-        button:hover {
+        .button-more-characters:hover {
             background: #931919;
+        }
+
+        .local-loader {
+            margin: 50px 30px;
         }
     }
 
@@ -177,7 +196,7 @@
         font-size: 25px;
         width: 50px;
         height: 50px;
-        font-family: 'marvel';
+        font-family: "marvel";
         display: flex;
         flex-direction: column;
         justify-content: center;

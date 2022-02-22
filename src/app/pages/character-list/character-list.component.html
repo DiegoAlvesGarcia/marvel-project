@@ -1,7 +1,7 @@
 <app-loader *ngIf="loader"></app-loader>
 <section class="container" *ngIf="!loader">
     <div class="header">
-        <h1 class="title">
+        <h1 class="title" (click)="listCharacters()">
             <span class="principal">Marvel's</span>
             <span class="secundary">Characters</span>
         </h1>
@@ -9,24 +9,28 @@
             <div class="input-area">
                 <form [formGroup]="form">
                     <input name="Heroes" id="heroes" formControlName="search">
-                    <button class="button-search" (click)="searchCharacter()">
+                    <button class="button-search" (click)="listCharacters(form.value.search)">
                         <i class="gg-search"></i>
                     </button>
                 </form>
             </div>
             <label for="heroes">enter the hero's name</label>
+            <button (click)="listCharacters()" class="clear-search">Limpar pesquisa</button>
         </div>
     </div>
     <div class="main">
-        <div *ngFor="let character of characters" class="character">
+        <div *ngFor="let character of characters" class="character-list">
             <div class="card" (click)="goToCharacterDetails(character)">
                 <img src="{{character.thumbnail.path}}.jpg" aria-hidden="true">
                 <p>{{character.name}}</p>
             </div>
         </div>
+        <p *ngIf="!characters[0]" class="character-not-found">
+            Sorry, character not found!
+        </p>
         <button [disabled]="charactersResponseComplete.count < charactersResponseComplete.limit" *ngIf="!localLoader"
-            (click)="moreCharacters()" class="button-area">load more heroes</button>
-        <app-local-loader class="button-area" *ngIf="localLoader"></app-local-loader>
+            (click)="moreCharacters()" class="button-more-characters">load more heroes</button>
+        <app-local-loader class="local-loader" *ngIf="localLoader"></app-local-loader>
     </div>
     <button aria-hidden="true" (click)="scrollTop()" class="go-up">&#9650;</button>
 </section>

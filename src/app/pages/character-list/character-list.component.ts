@@ -14,7 +14,7 @@ export class CharacterListComponent implements OnInit {
 
   private counter: number = 0;
   private valueFormSearch: string;
-  
+
   characters: Result[] = [];
   loader: boolean = true;
   localLoader: boolean = false;
@@ -28,6 +28,7 @@ export class CharacterListComponent implements OnInit {
 
   ngOnInit(): void {
     this.setForm();
+    this.getValueSearch();
     this.getCharactersBehavior();
   }
 
@@ -37,21 +38,9 @@ export class CharacterListComponent implements OnInit {
     });
   }
 
-  private getCharactersService(name?: string) {
-    this.characterService.getCharacters(this.counter, name)
-      .pipe(take(1))
-      .subscribe({
-        next: (resp) => {
-          this.setValuesCharacters(resp);
-        },
-        error: () => {
-          this.router.navigateByUrl('/error')
-        },
-        complete: () => {
-          this.finalizeLoader();
-          this.localLoader = false;
-        }
-      })
+  private getValueSearch() {
+    this.valueFormSearch = this.characterService.valueFormSearch;
+    this.form.controls['search'].setValue(this.valueFormSearch)
   }
 
   private getCharactersBehavior() {
@@ -70,10 +59,28 @@ export class CharacterListComponent implements OnInit {
       })
   }
 
+  private getCharactersService() {
+    this.characterService.getCharacters(this.counter, this.valueFormSearch)
+      .pipe(take(1))
+      .subscribe({
+        next: (resp) => {
+          this.setValuesCharacters(resp);
+        },
+        error: () => {
+          this.router.navigateByUrl('/error')
+        },
+        complete: () => {
+          this.finalizeLoader();
+          this.localLoader = false;
+        }
+      })
+  }
+
   private setValuesCharacters(value: Data) {
     this.charactersResponseComplete = value;
     this.counter = value.count + value.offset;
     this.characters = value.results;
+    console.warn('CHARACTERS', this.characters)
   }
 
   private startLoarder() {
@@ -81,7 +88,7 @@ export class CharacterListComponent implements OnInit {
   }
 
   private finalizeLoader() {
-      this.loader = false
+    this.loader = false
   }
 
   goToCharacterDetails(character: Result) {
@@ -91,16 +98,22 @@ export class CharacterListComponent implements OnInit {
 
   moreCharacters() {
     this.localLoader = true;
-    this.getCharactersService(this.valueFormSearch);
+    this.getCharactersService();
   }
 
-  searchCharacter() {
+  listCharacters(valueForm: string | undefined) {
+    if (!valueForm && !this.valueFormSearch) {
+      return;
+    }
+
     this.startLoarder()
     this.counter = 0;
     this.characters = [];
-    this.valueFormSearch = this.form.value.search
+    this.valueFormSearch = valueForm;
+    this.characterService.valueFormSearch = this.valueFormSearch;
+    this.form.controls['search'].setValue(this.valueFormSearch)
     this.characterService.clearCharactersSubject();
-    this.getCharactersService(this.valueFormSearch);
+    this.getCharactersService();
   }
 
   scrollTop() {
