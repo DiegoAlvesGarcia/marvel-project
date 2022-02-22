@@ -101,7 +101,7 @@ export class CharacterListComponent implements OnInit {
     this.getCharactersService();
   }
 
-  listCharacters(valueForm: string | undefined) {
+  listCharacters(valueForm: string = '') {
     if (!valueForm && !this.valueFormSearch) {
       return;
     }
