@@ -1,6 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
 
 import { ErrorComponent } from './error.component';
+
+const routerStub = {
+    navigateByUrl: jest.fn(() => new Promise<boolean>(() => true))
+}
 
 describe('ErrorComponent', () => {
   let component: ErrorComponent;
@@ -8,9 +13,12 @@ describe('ErrorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ErrorComponent ]
+      declarations: [ErrorComponent],
+      providers: [
+        { provide: Router, useValue: routerStub }
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -22,4 +30,9 @@ describe('ErrorComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should to test the function tryAgain()', () => {
+    component.tryAgain();
+    expect(routerStub.navigateByUrl).toHaveBeenCalledWith('/character-list');
+  })
 });
