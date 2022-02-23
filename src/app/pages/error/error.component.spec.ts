@@ -1,11 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
+import { routerStub } from 'src/app/shared/stubs/router.stub';
 
 import { ErrorComponent } from './error.component';
-
-const routerStub = {
-    navigateByUrl: jest.fn(() => new Promise<boolean>(() => true))
-}
 
 describe('ErrorComponent', () => {
   let component: ErrorComponent;
