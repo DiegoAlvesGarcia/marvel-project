@@ -71,7 +71,7 @@ export interface Result {
     id: number;
     name: string;
     description: string;
-    modified: Date;
+    modified: string;
     thumbnail: Thumbnail;
     resourceURI: string;
     comics: Comics;
