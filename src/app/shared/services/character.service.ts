@@ -13,9 +13,9 @@ export class CharacterService {
     private hash = Md5.hashStr(this.time + this.privateKey + this.publicKey);
     private baseParams = `ts=${this.time}&apikey=${this.publicKey}&hash=${this.hash}`;
     private urlBase = 'https://gateway.marvel.com/v1/public/characters?';
-    
+
     private charactersSubject = new BehaviorSubject<Data>(null);
-    
+
     private characterValue: Result;
     private valueFormSearchListCharacter: string;
     private characterData: Data;
@@ -29,7 +29,7 @@ export class CharacterService {
         return this.charactersSubject.asObservable();
     }
 
-    get character(): Result {
+    get character(): Result | undefined {
         return this.characterValue;
     }
 
@@ -50,17 +50,17 @@ export class CharacterService {
             this.urlBase + (name ? `nameStartsWith=${name}&` : '') + `offset=${counter}&` + this.baseParams
         ).pipe(
             map((response) => response.data),
-            tap((value) => {
-                this.characterData = value;
-                this.characterResultList = this.characterResultList.concat(value.results);
-                this.characterData.results = this.characterResultList;
-                this.charactersSubject.next(this.characterData);
-            })
+    tap((value) => {
+        this.characterData = value;
+        this.characterResultList = this.characterResultList.concat(value.results);
+        this.characterData.results = this.characterResultList;
+        this.charactersSubject.next(this.characterData);
+    })
         );
     }
 
-    clearCharactersSubject() {
-        this.characterResultList = [];
-        this.charactersSubject.next(null);
-    }
+clearCharactersSubject() {
+    this.characterResultList = [];
+    this.charactersSubject.next(null);
+}
 }
