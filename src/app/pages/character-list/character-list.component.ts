@@ -12,8 +12,8 @@ import { CharacterService } from 'src/app/shared/services/character.service';
 })
 export class CharacterListComponent implements OnInit {
 
-  private counter: number = 0;
-  private valueFormSearch: string;
+  counter: number = 0;
+  valueFormSearch: string;
 
   characters: Result[] = [];
   loader: boolean = true;
@@ -80,7 +80,6 @@ export class CharacterListComponent implements OnInit {
     this.charactersResponseComplete = value;
     this.counter = value.count + value.offset;
     this.characters = value.results;
-    console.warn('CHARACTERS', this.characters)
   }
 
   private startLoarder() {
