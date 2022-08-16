@@ -54,6 +54,10 @@
       "<rootDir>/dist/",
       "<rootDir>/src/test.ts"
     ],
+    "coveragePathIgnorePatterns": [
+      ".stub.ts",
+      ".mock.ts"
+    ],
     "moduleDirectories": ["node_modules", "src"],
     "modulePaths": [
       "<rootDir>"
