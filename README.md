@@ -2,26 +2,26 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.3.
 
-## To execute this project
+## To execute this project:
 
 (1) Clone this project | (2) Use the command `npm install --force` to install the dependencies | (3) Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Build
+## Build:
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+## Running unit tests:
 
 Run `npx jest` to execute the unit tests via [JEST](https://jestjs.io/).
 
-## Project buildered by Heroku
+## Project buildered by Heroku:
 
 To access project online -> https://angular-marvel-project.herokuapp.com/
 
-## Node version
+## Node version:
 
 16.14.0
 
-## npm version
+## npm version:
 
 8.3.1
