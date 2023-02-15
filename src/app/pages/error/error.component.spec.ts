@@ -4,7 +4,7 @@ import { routerStub } from 'src/app/shared/stubs/router.stub';
 
 import { ErrorComponent } from './error.component';
 
-describe('ErrorComponent', () => {
+describe('ErrorComponents', () => {
   let component: ErrorComponent;
   let fixture: ComponentFixture<ErrorComponent>;
 
